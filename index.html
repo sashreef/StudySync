@@ -52,6 +52,10 @@
                 <div class="hero-cta">
                     <a href="product.html" class="btn btn-primary">Explore Features</a>
                     <a href="contact.html" class="btn btn-secondary">Join Waitlist</a>
+                    <button onclick="openVideo()" class="btn btn-primary"
+                        style="background: linear-gradient(135deg, #ec4899 0%, #f59e0b 100%);">
+                        ▶ Watch Video
+                    </button>
                 </div>
                 <div class="hero-stats">
                     <div class="stat">
@@ -233,19 +237,74 @@
                 <div class="footer-section">
                     <h4>Contact</h4>
                     <ul>
-                        <li>📧 hello@studysync.ai</li>
+                        <li>📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                                data-cfemail="620a070e0e0d22111617061b111b0c014c030b">[email&#160;protected]</a></li>
                         <li>📍 Kaunas, Lithuania</li>
                         <li>🕐 Mon-Fri: 9AM-6PM</li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 StudySync. All rights reserved.</p>
+                <p>&copy; 2024 StudySync. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Video Popup Modal -->
+    <div id="videoModal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; justify-content: center; align-items: center;">
+        <div style="position: relative; width: 90%; max-width: 900px;">
+            <button onclick="closeVideo()"
+                style="position: absolute; top: -50px; right: 0; background: white; color: #1e293b; border: none; font-size: 36px; cursor: pointer; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+                ×
+            </button>
+            <div
+                style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+                <iframe id="videoFrame" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src=""
+                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
     <script src="js/main.js"></script>
+    <script>
+        // Video Modal Functions
+        function openVideo() {
+            const modal = document.getElementById('videoModal');
+            const frame = document.getElementById('videoFrame');
+
+            // ЗАМЕНИ 'dQw4w9WgXcQ' на ID твоего YouTube видео!
+            // Например: если твое видео https://youtube.com/watch?v=ABC123
+            // Используй: ABC123
+            frame.src = 'https://www.https://www.youtube.com/watch?v=jG7EzF6hgWA';
+
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideo() {
+            const modal = document.getElementById('videoModal');
+            const frame = document.getElementById('videoFrame');
+
+            frame.src = '';
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        // Close on ESC key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeVideo();
+            }
+        });
+
+        // Close on background click
+        document.getElementById('videoModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeVideo();
+            }
+        });
+    </script>
 </body>
 
 </html>
